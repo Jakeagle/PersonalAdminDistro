@@ -8,7 +8,7 @@ document.getElementById("poForm").addEventListener("submit", function (e) {
   const studentQty = document.getElementById("studentQty").value;
   const teacherQty = document.getElementById("teacherQty").value;
   const adminEmail = document.getElementById("adminEmail").value;
- 
+
   const emailBody = `
 Hello,
 
@@ -74,13 +74,21 @@ function sendParcelPost(
     });
 }
 
- const submitBtn = document.querySelector(".submitBtn");
+const submitBtn = document.querySelector(".submitBtn");
+submitBtn.addEventListener("click", function () {
+  console.log("Submit button clicked");
 
-  submitBtn.addEventListener("click", function () {
-    console.log("Submit button clicked");
-    sendParcelPost(schoolName, poNumber, studentQty, teacherQty, adminEmail);
-    console.log("sendParcelPost function called");
-  });
+  // Grab form input values directly from the DOM
+  const schoolName = document.getElementById("schoolName").value.trim();
+  const poNumber = document.getElementById("poNumber").value.trim();
+  const studentQty = parseInt(document.getElementById("studentQty").value);
+  const teacherQty = parseInt(document.getElementById("teacherQty").value);
+  const adminEmail = document.getElementById("adminEmail").value.trim();
+
+  // Now call the sendParcelPost function with actual values
+  sendParcelPost(schoolName, poNumber, studentQty, teacherQty, adminEmail);
+  console.log("sendParcelPost function called");
+});
 
 // Example usage (call this after form submission):
 // sendParcelPost(schoolName, poNumber, studentQty, teacherQty, adminEmail);
