@@ -1,3 +1,5 @@
+"use strict";
+
 document.getElementById("poForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -6,7 +8,13 @@ document.getElementById("poForm").addEventListener("submit", function (e) {
   const studentQty = document.getElementById("studentQty").value;
   const teacherQty = document.getElementById("teacherQty").value;
   const adminEmail = document.getElementById("adminEmail").value;
+  const submitBtn = document.querySelector(".submitBtn");
 
+  submitBtn.addEventListener("click", function () {
+    console.log("Submit button clicked");
+    sendParcelPost(schoolName, poNumber, studentQty, teacherQty, adminEmail);
+    console.log("sendParcelPost function called");
+  });
   const emailBody = `
 Hello,
 
