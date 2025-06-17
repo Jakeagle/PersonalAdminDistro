@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Send PO & License Distribution Access</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="container">
-        <h1>Send License Access to School Contact</h1>
-        <form id="poForm">
-            <label for="schoolName">School Name:</label>
-            <input type="text" id="schoolName" required>
+      <h1>Send License Access to School Contact</h1>
+      <form id="poForm">
+        <label for="schoolName">School Name:</label>
+        <input type="text" id="schoolName" required />
 
-            <label for="poNumber">PO Number:</label>
-            <input type="text" id="poNumber" required>
+        <label for="poNumber">PO Number:</label>
+        <input type="text" id="poNumber" required />
 
-            <label for="studentQty">Number of Student Licenses:</label>
-            <input type="number" id="studentQty" required>
+        <label for="studentQty">Number of Student Licenses:</label>
+        <input type="number" id="studentQty" required />
 
-            <label for="teacherQty">Number of Teacher Licenses:</label>
-            <input type="number" id="teacherQty" required>
+        <label for="teacherQty">Number of Teacher Licenses:</label>
+        <input type="number" id="teacherQty" required />
 
-            <label for="adminEmail">Admin/Principal Email:</label>
-            <input type="email" id="adminEmail" required>
+        <label for="adminEmail">Admin/Principal Email:</label>
+        <input type="email" id="adminEmail" required />
 
-            <button type="submit">Send Instructions</button>
-        </form>
-        <div id="confirmation" style="display:none;"></div>
+        <button type="submit" class="submitBtn">Send Instructions</button>
+      </form>
+      <div id="confirmation" style="display: none"></div>
     </div>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
