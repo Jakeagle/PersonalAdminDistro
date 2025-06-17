@@ -4,9 +4,18 @@ document.getElementById("poForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
   const schoolName = document.getElementById("schoolName").value;
+  const schoolDistrict = document.getElementById("schoolDistrict").value;
   const poNumber = document.getElementById("poNumber").value;
   const studentQty = document.getElementById("studentQty").value;
   const teacherQty = document.getElementById("teacherQty").value;
+  const teacherLicenseTotal = document.getElementById(
+    "teacherLicenseTotal"
+  ).value;
+  const studentLicenseTotal = document.getElementById(
+    "studentLicenseTotal"
+  ).value;
+  const totalPurchasePrice =
+    document.getElementById("totalPurchasePrice").value;
   const adminEmail = document.getElementById("adminEmail").value;
 
   const emailBody = `
@@ -16,9 +25,13 @@ Thank you for your recent purchase of Trinity Capital licenses.
 
 Here are the details of your order:
 School Name: ${schoolName}
+School District: ${schoolDistrict}
 PO Number: ${poNumber}
 Student Licenses: ${studentQty}
 Teacher Licenses: ${teacherQty}
+Teacher License Total: $${teacherLicenseTotal}
+Student License Total: $${studentLicenseTotal}
+Total Purchase Price: $${totalPurchasePrice}
 
 To begin distributing licenses to your teachers, please visit the following secure portal:
 https://trincaplicensedist.netlify.app
@@ -47,9 +60,13 @@ const SERVER_BASE_URL =
 
 function sendParcelPost(
   schoolName,
+  schoolDistrict,
   poNumber,
   studentQty,
   teacherQty,
+  teacherLicenseTotal,
+  studentLicenseTotal,
+  totalPurchasePrice,
   adminEmail
 ) {
   fetch(SERVER_BASE_URL + "/send-parcel-email", {
@@ -59,9 +76,13 @@ function sendParcelPost(
     },
     body: JSON.stringify({
       schoolName,
+      schoolDistrict,
       poNumber,
       studentQty,
       teacherQty,
+      teacherLicenseTotal,
+      studentLicenseTotal,
+      totalPurchasePrice,
       adminEmail,
     }),
   })
@@ -80,15 +101,35 @@ submitBtn.addEventListener("click", function () {
 
   // Grab form input values directly from the DOM
   const schoolName = document.getElementById("schoolName").value.trim();
+  const schoolDistrict = document.getElementById("schoolDistrict").value.trim();
   const poNumber = document.getElementById("poNumber").value.trim();
   const studentQty = parseInt(document.getElementById("studentQty").value);
   const teacherQty = parseInt(document.getElementById("teacherQty").value);
+  const teacherLicenseTotal = parseFloat(
+    document.getElementById("teacherLicenseTotal").value
+  );
+  const studentLicenseTotal = parseFloat(
+    document.getElementById("studentLicenseTotal").value
+  );
+  const totalPurchasePrice = parseFloat(
+    document.getElementById("totalPurchasePrice").value
+  );
   const adminEmail = document.getElementById("adminEmail").value.trim();
 
   // Now call the sendParcelPost function with actual values
-  sendParcelPost(schoolName, poNumber, studentQty, teacherQty, adminEmail);
+  sendParcelPost(
+    schoolName,
+    schoolDistrict,
+    poNumber,
+    studentQty,
+    teacherQty,
+    teacherLicenseTotal,
+    studentLicenseTotal,
+    totalPurchasePrice,
+    adminEmail
+  );
   console.log("sendParcelPost function called");
 });
 
 // Example usage (call this after form submission):
-// sendParcelPost(schoolName, poNumber, studentQty, teacherQty, adminEmail);
+// sendParcelPost(schoolName, schoolDistrict, poNumber, studentQty, teacherQty, teacherLicenseTotal, studentLicenseTotal, totalPurchasePrice, adminEmail);
