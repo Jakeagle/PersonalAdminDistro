@@ -56,7 +56,7 @@ Trinity Capital EdTech Solutions
 });
 
 const SERVER_BASE_URL =
-  "https://moneytalkspurchasing-2-bkftf2deeyexc3c0.eastus-01.azurewebsites.net";
+  "https://tcpurchasingserver-production.up.railway.app";
 
 function sendParcelPost(
   schoolName,
